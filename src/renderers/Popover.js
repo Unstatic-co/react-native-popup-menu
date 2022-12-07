@@ -190,10 +190,7 @@ export function computeProperties (
     right: getRightPrice(hOptions, vOptions),
     left: getLeftPrice(hOptions, vOptions),
   };
-  const bestPrice = Object.values(prices).sort((a, b) => a - b)[0]
-  const bestPlacement = prices[preferredPlacement] === bestPrice
-    ? preferredPlacement
-    : Object.keys(prices).find(pl => prices[pl] === bestPrice)
+  var bestPlacement = prices['top'] < prices['bottom'] ? 'top' : 'bottom'
 
   return propertiesByPlacement[bestPlacement](hOptions, vOptions, isRTL)
 }
